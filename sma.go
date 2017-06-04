@@ -16,7 +16,7 @@ type SMA struct {
 
 	vals []float64 // stored values, circular list
 	n    int       // number of actually stored values (vals slice usage)
-	i    int       // last-set value index; first-set (oldest) value is i-1
+	i    int       // last-set value index; first-set (oldest) value is (i+1)%window when n == window
 
 	avg float64 // current Simple Moving Average value
 }
@@ -54,7 +54,7 @@ func (a *SMA) Add(v float64) float64 {
 		// simply assign given value as current average:
 		a.avg = v
 		a.vals[0] = v
-		a.n++
+		a.n = 1
 	}
 	return a.avg
 }
