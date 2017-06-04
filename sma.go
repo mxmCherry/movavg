@@ -36,21 +36,20 @@ func NewSMA(window int) *SMA {
 // Add recalculates Simple Moving Average value and returns it.
 func (a *SMA) Add(v float64) float64 {
 	if a.n == a.window {
-		// filled window - most frequent case, so checked first:
+		// filled window - most frequent case:
 		// https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average
 		a.i = (a.i + 1) % a.window
 		a.avg += (v - a.vals[a.i]) / float64(a.n)
 		a.vals[a.i] = v
 	} else if a.n != 0 {
-		// partially-filled window;
-		// this is second most frequent case, so checked second:
+		// partially-filled window - second most frequent case:
 		// https://en.wikipedia.org/wiki/Moving_average#Cumulative_moving_average
 		a.i = (a.i + 1) % a.window
 		a.avg = (v + float64(a.n)*a.avg) / float64(a.n+1)
 		a.vals[a.i] = v
 		a.n++
 	} else {
-		// empty window - least frequent case (occurs only once, on first value added), so checked last:
+		// empty window - least frequent case (occurs only once, on first value added):
 		// simply assign given value as current average:
 		a.avg = v
 		a.vals[0] = v
