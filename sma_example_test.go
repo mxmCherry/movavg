@@ -10,22 +10,22 @@ func ExampleSMA() {
 
 	sma := ThreadSafe(NewSMA(3))
 
-	fmt.Println(sma.Avg())
+	fmt.Println(sma.Avg()) // 0
 
-	fmt.Println(sma.Add(1))
-	fmt.Println(sma.Avg())
+	fmt.Println(sma.Add(1)) // 1
+	fmt.Println(sma.Avg())  // 1
 
-	fmt.Println(sma.Add(2))
-	fmt.Println(sma.Avg())
+	fmt.Println(sma.Add(2)) // 1.5
+	fmt.Println(sma.Avg())  // 1.5
 
-	fmt.Println(sma.Add(3))
-	fmt.Println(sma.Avg())
+	fmt.Println(sma.Add(3)) // 2
+	fmt.Println(sma.Avg())  // 2
 
-	fmt.Println(sma.Add(4))
-	fmt.Println(sma.Avg())
+	fmt.Println(sma.Add(4)) // 3
+	fmt.Println(sma.Avg())  // 3
 
-	fmt.Println(sma.Add(5))
-	fmt.Println(sma.Avg())
+	fmt.Println(sma.Add(5)) // 4
+	fmt.Println(sma.Avg())  // 4
 
 	// Output:
 	// 0
