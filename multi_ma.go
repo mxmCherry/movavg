@@ -1,6 +1,6 @@
 package movavg
 
-// MultiMA defines a set of Moving Average calculators:
+// MultiMA defines a group of Moving Average calculators:
 // https://en.wikipedia.org/wiki/Moving_average
 type MultiMA interface {
 	// Add recalculates Moving Average values and returns them.
