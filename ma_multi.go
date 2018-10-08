@@ -1,21 +1,12 @@
 package movavg
 
-// MAMulti is a set of related calculators of Moving Average:
-// https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average
-//
-// It is as precise, as float64 is: https://golang.org/pkg/builtin/#float64 (good performance, not-so-good precision).
-//
-// It is not thread-safe, if you need to access it from multiple goroutines - secure it with ThreadSafeMulti(...).
-//
-// It is safe to use even without adding values (then Avg() will return zeroes),
-// or without filling entire window (then average of currently added values will be returned).
-//
-// To initialize calculator with current average value, simply Add(...) this value.
+// MAMulti is a group of Moving Average calculators:
+// https://en.wikipedia.org/wiki/Moving_average
 type MAMulti struct {
 	mas []MA
 }
 
-// NewMulti cronstructs a new Simple Moving Average calculator set from
+// NewMulti constructs a new Simple Moving Average calculator set from
 // the given Moving Average instances.
 func NewMulti(mas ...MA) MultiMA {
 	m := &MAMulti{}
