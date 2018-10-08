@@ -6,18 +6,18 @@ type Set []MA
 
 // Add recalculates Simple Moving Average values and returns them.
 func (mas Set) Add(v float64) (newAvgs []float64) {
-	result := make([]float64, len(mas))
+	newAvgs = make([]float64, len(mas))
 	for i, ma := range mas {
-		result[i] = ma.Add(v)
+		newAvgs[i] = ma.Add(v)
 	}
-	return result
+	return newAvgs
 }
 
 // Avg returns current Simple Moving Average values.
 func (mas Set) Avg() (curAvg []float64) {
-	result := make([]float64, len(mas))
+	curAvg = make([]float64, len(mas))
 	for i, ma := range mas {
-		result[i] = ma.Avg()
+		curAvg[i] = ma.Avg()
 	}
-	return result
+	return curAvg
 }
