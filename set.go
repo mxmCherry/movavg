@@ -4,7 +4,7 @@ package movavg
 // https://en.wikipedia.org/wiki/Moving_average
 type Set []MA
 
-// Add recalculates Simple Moving Average values and returns them.
+// Add recalculates Moving Average values and returns them.
 func (mas Set) Add(v float64) (newAvgs []float64) {
 	newAvgs = make([]float64, len(mas))
 	for i, ma := range mas {
@@ -13,7 +13,7 @@ func (mas Set) Add(v float64) (newAvgs []float64) {
 	return newAvgs
 }
 
-// Avg returns current Simple Moving Average values.
+// Avg returns current Moving Average values.
 func (mas Set) Avg() (curAvg []float64) {
 	curAvg = make([]float64, len(mas))
 	for i, ma := range mas {
