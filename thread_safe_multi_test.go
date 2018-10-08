@@ -11,12 +11,17 @@ import (
 
 var _ = Describe("ThreadSafeMulti", func() {
 	It("should use underlying MultiMA object", func() {
-		multi := NewMultiSMA([]int{2, 4, 8})
+		multi := NewMulti(
+			NewSMA(2),
+			NewSMA(4),
+			NewSMA(8),
+		)
 		subject := ThreadSafeMulti(multi)
 
 		vsets := [][]float64{
-			[]float64{1, 1, 1, 1},
-			[]float64{2, 2, 2, 2}}
+			{1, 1, 1, 1},
+			{2, 2, 2, 2},
+		}
 
 		var wg sync.WaitGroup
 
@@ -34,6 +39,5 @@ var _ = Describe("ThreadSafeMulti", func() {
 
 		Expect(subject.Add(2)).To(Equal([]float64{1.5, 1.25, 1.5}))
 		Expect(subject.Avg()).To(Equal([]float64{1.5, 1.25, 1.5}))
-
 	})
 })

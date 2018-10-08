@@ -17,21 +17,6 @@ func NewMulti(mas ...MA) MultiMA {
 	return m
 }
 
-// NewMultiSMA constructs new Simple Moving Average calculator set.
-// Window arg must have 1 or more elements. For example, windows
-// of 1 minute, 5 minutes, 30 minutes, 1 hour for a given measurement.
-func NewMultiSMA(windows []int) MultiMA {
-	if windows == nil || len(windows) == 0 {
-		panic("no windows defined")
-	}
-
-	mas := make([]MA, len(windows))
-	for i, w := range windows {
-		mas[i] = NewSMA(w)
-	}
-	return NewMulti(mas...)
-}
-
 // Add recalculates Simple Moving Average values and returns them.
 func (m *MAMulti) Add(value float64) (newAvgs []float64) {
 	result := make([]float64, len(m.mas))

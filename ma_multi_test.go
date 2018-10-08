@@ -11,7 +11,11 @@ var _ = Describe("SMASet", func() {
 	var _ = (*SMA)(nil)
 
 	It("should manage a set of Simple Moving Average calculators", func() {
-		subject := NewMultiSMA([]int{2, 3, 4})
+		subject := NewMulti(
+			NewSMA(2),
+			NewSMA(3),
+			NewSMA(4),
+		)
 
 		// zero until values added:
 		Expect(subject.Avg()).To(Equal([]float64{0, 0, 0}))
