@@ -11,7 +11,7 @@ import (
 
 var _ = Describe("MultiThreadSafe", func() {
 	It("should use underlying MultiMA object", func() {
-		underlying := &mockSet{
+		underlying := &mockMultiMA{
 			addRes: []float64{0.1, 0.2, 0.3}, // dummy
 			avgRes: []float64{0.4, 0.5, 0.6}, // dummy
 		}

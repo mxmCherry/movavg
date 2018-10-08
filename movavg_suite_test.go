@@ -35,19 +35,19 @@ func (a *mockMA) Avg() float64 {
 
 // ----------------------------------------------------------------------------
 
-var _ MultiMA = (*mockSet)(nil)
+var _ MultiMA = (*mockMultiMA)(nil)
 
-type mockSet struct {
+type mockMultiMA struct {
 	addArgs []float64
 	addRes  []float64
 	avgRes  []float64
 }
 
-func (s *mockSet) Add(v float64) []float64 {
+func (s *mockMultiMA) Add(v float64) []float64 {
 	s.addArgs = append(s.addArgs, v)
 	return s.addRes
 }
 
-func (s *mockSet) Avg() []float64 {
+func (s *mockMultiMA) Avg() []float64 {
 	return s.avgRes
 }

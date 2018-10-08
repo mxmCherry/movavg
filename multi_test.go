@@ -7,11 +7,11 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("Set", func() {
-	var _ MultiMA = Set(nil)
+var _ = Describe("Multi", func() {
+	var _ MultiMA = Multi(nil)
 
-	It("creates a MultiMA calculator from a given set of MAs", func() {
-		subject := Set{
+	It("groups several moving average calculators", func() {
+		subject := Multi{
 			NewSMA(2),
 			NewSMA(3),
 			NewSMA(4),
