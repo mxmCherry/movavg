@@ -11,12 +11,11 @@ import (
 
 var _ = Describe("MultiThreadSafe", func() {
 	It("should use underlying MultiMA object", func() {
-		mas := Set{
-			NewSMA(2),
-			NewSMA(4),
-			NewSMA(8),
+		underlying := &mockSet{
+			addRes: []float64{0.1, 0.2, 0.3}, // dummy
+			avgRes: []float64{0.4, 0.5, 0.6}, // dummy
 		}
-		subject := MultiThreadSafe(mas)
+		subject := MultiThreadSafe(underlying)
 
 		vsets := [][]float64{
 			{1, 1, 1, 1},
@@ -37,7 +36,13 @@ var _ = Describe("MultiThreadSafe", func() {
 
 		wg.Wait()
 
-		Expect(subject.Add(2)).To(Equal([]float64{1.5, 1.25, 1.5}))
-		Expect(subject.Avg()).To(Equal([]float64{1.5, 1.25, 1.5}))
+		Expect(subject.Add(3)).To(Equal([]float64{0.1, 0.2, 0.3})) // dummy
+		Expect(subject.Avg()).To(Equal([]float64{0.4, 0.5, 0.6}))  // dummy
+
+		Expect(underlying.addArgs).To(ConsistOf([]float64{
+			1, 1, 1, 1, // four ones (added concurrently)
+			2, 2, 2, 2, // four twos (added concurrently)
+			3, // added last
+		}))
 	})
 })

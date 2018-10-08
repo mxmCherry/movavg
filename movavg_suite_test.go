@@ -15,16 +15,33 @@ func TestMovavg(t *testing.T) {
 // ----------------------------------------------------------------------------
 
 type mockMA struct {
-	addArg float64
-	addRes float64
-	avgRes float64
+	addArgs []float64
+	addRes  float64
+	avgRes  float64
 }
 
 func (a *mockMA) Add(v float64) float64 {
-	a.addArg = v
+	a.addArgs = append(a.addArgs, v)
 	return a.addRes
 }
 
 func (a *mockMA) Avg() float64 {
 	return a.avgRes
+}
+
+// ----------------------------------------------------------------------------
+
+type mockSet struct {
+	addArgs []float64
+	addRes  []float64
+	avgRes  []float64
+}
+
+func (s *mockSet) Add(v float64) []float64 {
+	s.addArgs = append(s.addArgs, v)
+	return s.addRes
+}
+
+func (s *mockSet) Avg() []float64 {
+	return s.avgRes
 }
