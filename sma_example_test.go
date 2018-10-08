@@ -10,6 +10,7 @@ func ExampleSMA() {
 
 	sma := ThreadSafe(NewSMA(3))
 
+	// zero until values added:
 	fmt.Println(sma.Avg()) // 0
 
 	fmt.Println(sma.Add(1)) // 1

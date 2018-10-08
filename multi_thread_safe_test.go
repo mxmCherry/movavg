@@ -9,13 +9,13 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("ThreadSafe", func() {
-	It("should use underlying MA object", func() {
-		underlying := &mockMA{
-			addRes: 0.1, // dummy
-			avgRes: 0.2, // dummy
+var _ = Describe("MultiThreadSafe", func() {
+	It("should use underlying MultiMA object", func() {
+		underlying := &mockMultiMA{
+			addRes: []float64{0.1, 0.2, 0.3}, // dummy
+			avgRes: []float64{0.4, 0.5, 0.6}, // dummy
 		}
-		subject := ThreadSafe(underlying)
+		subject := MultiThreadSafe(underlying)
 
 		vsets := [][]float64{
 			{1, 1, 1, 1},
@@ -36,8 +36,8 @@ var _ = Describe("ThreadSafe", func() {
 
 		wg.Wait()
 
-		Expect(subject.Add(3)).To(Equal(float64(0.1))) // dummy
-		Expect(subject.Avg()).To(Equal(float64(0.2)))  // dummy
+		Expect(subject.Add(3)).To(Equal([]float64{0.1, 0.2, 0.3})) // dummy
+		Expect(subject.Avg()).To(Equal([]float64{0.4, 0.5, 0.6}))  // dummy
 
 		Expect(underlying.addArgs).To(ConsistOf([]float64{
 			1, 1, 1, 1, // four ones (added concurrently)

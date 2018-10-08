@@ -8,7 +8,7 @@ import (
 )
 
 var _ = Describe("SMA", func() {
-	var _ = (*SMA)(nil)
+	var _ MA = (*SMA)(nil)
 
 	It("should calculate Simple Moving Average", func() {
 		subject := NewSMA(3)
