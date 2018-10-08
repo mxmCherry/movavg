@@ -1,10 +1,12 @@
 package movavg_test
 
 import (
+	"testing"
+
+	. "github.com/mxmCherry/movavg"
+
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	"testing"
 )
 
 func TestMovavg(t *testing.T) {
@@ -13,6 +15,8 @@ func TestMovavg(t *testing.T) {
 }
 
 // ----------------------------------------------------------------------------
+
+var _ MA = (*mockMA)(nil)
 
 type mockMA struct {
 	addArgs []float64
@@ -30,6 +34,8 @@ func (a *mockMA) Avg() float64 {
 }
 
 // ----------------------------------------------------------------------------
+
+var _ MultiMA = (*mockSet)(nil)
 
 type mockSet struct {
 	addArgs []float64
