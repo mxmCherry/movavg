@@ -9,14 +9,14 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("ThreadSafeMulti", func() {
+var _ = Describe("MultiThreadSafe", func() {
 	It("should use underlying MultiMA object", func() {
-		multi := Set{
+		mas := Set{
 			NewSMA(2),
 			NewSMA(4),
 			NewSMA(8),
 		}
-		subject := ThreadSafeMulti(multi)
+		subject := MultiThreadSafe(mas)
 
 		vsets := [][]float64{
 			{1, 1, 1, 1},

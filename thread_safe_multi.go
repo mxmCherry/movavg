@@ -2,30 +2,30 @@ package movavg
 
 import "sync"
 
-// ThreadSafeMulti synchronizes access to Moving Average calculator.
-func ThreadSafeMulti(multiMA MultiMA) MultiMA {
+// MultiThreadSafe synchronizes access to Moving Average calculator.
+func MultiThreadSafe(mas MultiMA) MultiMA {
 	return &threadSafeMulti{
-		multiMA: multiMA,
+		mas: mas,
 	}
 }
 
 // ----------------------------------------------------------------------------
 
 type threadSafeMulti struct {
-	mx      sync.RWMutex
-	multiMA MultiMA
+	mx  sync.RWMutex
+	mas MultiMA
 }
 
 func (a *threadSafeMulti) Add(v float64) []float64 {
 	a.mx.Lock()
-	avgs := a.multiMA.Add(v)
+	avgs := a.mas.Add(v)
 	a.mx.Unlock()
 	return avgs
 }
 
 func (a *threadSafeMulti) Avg() []float64 {
 	a.mx.RLock()
-	avgs := a.multiMA.Avg()
+	avgs := a.mas.Avg()
 	a.mx.RUnlock()
 	return avgs
 }
