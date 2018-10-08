@@ -11,7 +11,7 @@ import (
 
 var _ = Describe("ThreadSafeMulti", func() {
 	It("should use underlying MultiMA object", func() {
-		multi := MAMulti{
+		multi := Set{
 			NewSMA(2),
 			NewSMA(4),
 			NewSMA(8),

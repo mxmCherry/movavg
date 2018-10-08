@@ -11,7 +11,7 @@ var _ = Describe("SMASet", func() {
 	var _ = (*SMA)(nil)
 
 	It("should manage a set of Simple Moving Average calculators", func() {
-		subject := MAMulti{
+		subject := Set{
 			NewSMA(2),
 			NewSMA(3),
 			NewSMA(4),
@@ -38,7 +38,7 @@ var _ = Describe("SMASet", func() {
 	})
 
 	It("creates a multi from a given set of MAs", func() {
-		subject := MAMulti{
+		subject := Set{
 			NewSMA(2),
 			NewSMA(3),
 			NewSMA(4),
