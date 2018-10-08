@@ -9,19 +9,19 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("ThreadSafeSet", func() {
-	It("should use underlying MASet object", func() {
-		set := NewSMASet([]int{2, 4, 8})
-		subject := ThreadSafeSet(set)
+var _ = Describe("ThreadSafeMulti", func() {
+	It("should use underlying MultiMA object", func() {
+		multi := NewMultiSMA([]int{2, 4, 8})
+		subject := ThreadSafeMulti(multi)
 
-		valsets := [][]float64{
+		vsets := [][]float64{
 			[]float64{1, 1, 1, 1},
 			[]float64{2, 2, 2, 2}}
 
 		var wg sync.WaitGroup
 
-		for _, vset := range valsets {
-			wg.Add(1) 
+		for _, vset := range vsets {
+			wg.Add(1)
 			go func(vset []float64) {
 				for _, v := range vset {
 					subject.Add(v)

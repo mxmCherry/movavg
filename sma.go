@@ -23,7 +23,7 @@ type SMA struct {
 
 // NewSMA constructs new Simple Moving Average calculator.
 // Window arg must be >= 1.
-func NewSMA(window int) *SMA {
+func NewSMA(window int) MA {
 	if window <= 0 {
 		panic("movavg.NewSMA: window should be > 0")
 	}
