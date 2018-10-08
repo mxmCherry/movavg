@@ -1,7 +1,6 @@
 package movavg
 
-// Multi is a group of Moving Average calculators:
-// https://en.wikipedia.org/wiki/Moving_average
+// Multi is a group of Moving Average calculators.
 type Multi []MA
 
 // Add recalculates Moving Average values and returns them.
