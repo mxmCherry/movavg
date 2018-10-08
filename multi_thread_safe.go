@@ -2,7 +2,7 @@ package movavg
 
 import "sync"
 
-// MultiThreadSafe synchronizes access to Moving Average calculator.
+// MultiThreadSafe synchronizes access to Moving Average calculators group.
 func MultiThreadSafe(mas MultiMA) MultiMA {
 	return &multiThreadSafe{
 		mas: mas,
