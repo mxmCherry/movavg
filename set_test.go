@@ -8,8 +8,6 @@ import (
 )
 
 var _ = Describe("Set", func() {
-	var _ = (*SMA)(nil)
-
 	It("creates a MultiMA calculator from a given set of MAs", func() {
 		subject := Set{
 			NewSMA(2),
