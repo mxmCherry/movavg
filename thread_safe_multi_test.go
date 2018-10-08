@@ -3,7 +3,7 @@ package movavg_test
 import (
 	"sync"
 
-	. "github.com/blocktop/movavg"
+	. "github.com/mxmCherry/movavg"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

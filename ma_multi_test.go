@@ -1,7 +1,7 @@
 package movavg_test
 
 import (
-	. "github.com/blocktop/movavg"
+	. "github.com/mxmCherry/movavg"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -35,8 +35,8 @@ var _ = Describe("SMASet", func() {
 
 	It("creates a multi from a given set of MAs", func() {
 		subject := NewMulti(
-			NewSMA(2), 
-			NewSMA(3), 
+			NewSMA(2),
+			NewSMA(3),
 			NewSMA(4))
 
 		// zero until values added:
