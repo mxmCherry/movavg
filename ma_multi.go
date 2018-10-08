@@ -2,35 +2,22 @@ package movavg
 
 // MAMulti is a group of Moving Average calculators:
 // https://en.wikipedia.org/wiki/Moving_average
-type MAMulti struct {
-	mas []MA
-}
-
-// NewMulti constructs a new Simple Moving Average calculator set from
-// the given Moving Average instances.
-func NewMulti(mas ...MA) MultiMA {
-	m := &MAMulti{}
-	m.mas = make([]MA, len(mas))
-	for i, ma := range mas {
-		m.mas[i] = ma
-	}
-	return m
-}
+type MAMulti []MA
 
 // Add recalculates Simple Moving Average values and returns them.
-func (m *MAMulti) Add(value float64) (newAvgs []float64) {
-	result := make([]float64, len(m.mas))
-	for i, sma := range m.mas {
-		result[i] = sma.Add(value)
+func (mas MAMulti) Add(value float64) (newAvgs []float64) {
+	result := make([]float64, len(mas))
+	for i, ma := range mas {
+		result[i] = ma.Add(value)
 	}
 	return result
 }
 
 // Avg returns current Simple Moving Average values.
-func (m *MAMulti) Avg() (curAvg []float64) {
-	result := make([]float64, len(m.mas))
-	for i, sma := range m.mas {
-		result[i] = sma.Avg()
+func (mas MAMulti) Avg() (curAvg []float64) {
+	result := make([]float64, len(mas))
+	for i, ma := range mas {
+		result[i] = ma.Avg()
 	}
 	return result
 }

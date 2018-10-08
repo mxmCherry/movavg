@@ -11,11 +11,11 @@ import (
 
 var _ = Describe("ThreadSafeMulti", func() {
 	It("should use underlying MultiMA object", func() {
-		multi := NewMulti(
+		multi := MAMulti{
 			NewSMA(2),
 			NewSMA(4),
 			NewSMA(8),
-		)
+		}
 		subject := ThreadSafeMulti(multi)
 
 		vsets := [][]float64{
