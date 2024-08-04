@@ -3,7 +3,7 @@ package movavg_test
 import (
 	. "github.com/mxmCherry/movavg"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
 
