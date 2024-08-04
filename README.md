@@ -1,4 +1,8 @@
-# movavg [![GoDoc](https://godoc.org/github.com/mxmCherry/movavg?status.svg)](https://godoc.org/github.com/mxmCherry/movavg) [![Build Status](https://travis-ci.org/mxmCherry/movavg.svg?branch=master)](https://travis-ci.org/mxmCherry/movavg) [![Go Report Card](https://goreportcard.com/badge/github.com/mxmCherry/movavg)](https://goreportcard.com/report/github.com/mxmCherry/movavg)
+# movavg
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/mxmCherry/movavg.svg)](https://pkg.go.dev/github.com/mxmCherry/movavg)
+[![Test](https://github.com/mxmCherry/movavg/actions/workflows/test.yml/badge.svg)](https://github.com/mxmCherry/movavg/actions/workflows/test.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mxmCherry/movavg)](https://goreportcard.com/report/github.com/mxmCherry/movavg)
 
 [Moving Average](https://en.wikipedia.org/wiki/Moving_average) calculator for Go (Golang) with focus on performance.
 
